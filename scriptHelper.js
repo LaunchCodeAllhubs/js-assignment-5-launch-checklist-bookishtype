@@ -14,7 +14,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                         </ol>
                         <img src="${imageUrl}">`
 }
-//makes sure that the information submitted is valid and can be read 
+//makes sure that the information submitted is valid and can be read. Function takes in a string as a parameter and returns "Empty", "Not a Number", or "Is a Number"
 function validateInput(testInput) {
     let testInputNum = Number(testInput);
     if(testInput === "") {
@@ -41,7 +41,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     list.style.visibility = "visible";
     pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
-        if(fuelLevel < 10000 && cargoLevel <= 10000) {
+       //updating style and html elements if conditions are not met for launch
+       if(fuelLevel < 10000 && cargoLevel <= 10000) {
             fuelStatus.innerHTML = "Fuel level too low for launch";
             cargoStatus.innerHTML = "Cargo mass low enough for launch"
             launchStatus.innerHTML = "Shuttle Not Ready for Launch";
@@ -68,14 +69,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 async function myFetch() {
     let planetsReturned;
-
+//add url and return planets for pickPlanets
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         return response.json()
         });
 
     return planetsReturned;
 }
-
+//takes in one argument: a list of planets. Using Math.random(), return one planet from the list with a randomly-selected index
 function pickPlanet(planets) {
     let index = Math.floor(Math.random()*planets.length);
     return planets[index];
