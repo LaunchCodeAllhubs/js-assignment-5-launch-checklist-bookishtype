@@ -14,7 +14,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                         </ol>
                         <img src="${imageUrl}">`
 }
-
+//makes sure that the information submitted is valid and can be read 
 function validateInput(testInput) {
     let testInputNum = Number(testInput);
     if(testInput === "") {
@@ -32,7 +32,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    let fuelStatus = document.getElementById("fuelStatus");
    let cargoStatus = document.getElementById("cargoStatus");
    let launchStatus = document.getElementById("launchStatus");
-
+//creates alert to let user know that all information must be filled out/no empty fields
    if(validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
     alert("All fields are required!");
    } else if(validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
